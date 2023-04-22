@@ -1,0 +1,94 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Course Attainment Sheet</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        /* Add some basic styling */
+        
+        body {
+            font-family: Arial, sans-serif;
+        }
+        
+        table {
+            border-collapse: collapse;
+            width: 100%;
+        }
+        
+        th,
+        td {
+            border: 1px solid #ddd;
+            text-align: left;
+            padding: 8px;
+        }
+        
+        th {
+            background-color: #f2f2f2;
+        }
+        
+        .btn {
+            background-color: #4CAF50;
+            color: white;
+            padding: 8px 16px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin-top: 10px;
+        }
+        
+        .btn:hover {
+            background-color: #3e8e41;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Course Attainment Sheet</h1>
+    <h2>Course Name: <span id="course-name"></span></h2>
+    <div>
+        <label for="attainment-target">Set Attainment Target:</label>
+        <input type="number" id="attainment-target" name="attainment-target">
+        <button id="set-attainment-target-btn" class="btn">Set</button>
+    </div>
+    <table>
+        <thead>
+            <tr>
+                <th>Name of Student</th>
+                <th>Direct Attainment</th>
+            </tr>
+        </thead>
+        <tbody>
+            <tr>
+                <td contenteditable="true">John Doe</td>
+                <td contenteditable="true">80</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">Jane Smith</td>
+                <td contenteditable="true">90</td>
+            </tr>
+            <tr>
+                <td contenteditable="true">Bob Johnson</td>
+                <td contenteditable="true">70</td>
+            </tr>
+        </tbody>
+    </table>
+    <div>
+        <p>Number of students attaining Direct Attainment: <span id="attained-count"></span></p>
+        <a href="#" id="attained-download-btn" class="btn">Download List of Attained Students</a>
+    </div>
+    <div>
+        <p>Number of students not attaining Direct Attainment: <span id="not-attained-count"></span></p>
+        <a href="#" id="not-attained-download-btn" class="btn">Download List of Not Attained Students</a>
+    </div>
+    <script>
+        const courseNameElement = document.getElementById('course-name');
+        const attainmentTargetInput = document.getElementById('attainment-target');
+        const setAttainmentTargetButton = document.getElementById('set-attainment-target-btn');
+        const tableBody = document.querySelector('tbody');
+        const attainedCountElement = document.getElementById('attained-count');
+        const attainedDownloadButton = document.getElementById('attained-download-btn');
+        const notAttainedCountElement = document.getElementById('not-attained-count');
+        const notAttainedDownload

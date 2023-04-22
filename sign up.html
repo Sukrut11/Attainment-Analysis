@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta charset="UTF-8">
+    <title>Attainment Analysis</title>
+    <link rel="stylesheet" type="text/css" href="css\signup-page.css">
+    <script src="https://cdn.jsdelivr.net/npm/axios/dist/axios.min.js"></script>
+</head>
+
+<body>
+    <h1>Attainment Analysis</h1>
+
+    <form>
+        <label for="attainment-data">Upload attainment data as a CSV file:</label>
+        <input type="file" id="attainment-data" accept=".csv">
+    </form>
+
+    <button id="analyze-button" disabled>Analyze</button>
+
+    <div id="results"></div>
+
+    <script src="script.js"></script>
+</body>
+
+</html>

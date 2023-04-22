@@ -1,0 +1,364 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Course Attainment System</title>
+    <style>
+        /* Add font styles */
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 16px;
+        }
+
+        h1 {
+            font-size: 32px;
+        }
+
+        /* Style the form elements */
+        form {
+            max-width: 600px;
+            margin: 0 auto;
+        }
+
+        label {
+            display: block;
+            margin-bottom: 5px;
+        }
+
+        input[type="text"],
+        input[type="number"] {
+            width: 100%;
+            padding: 10px;
+            border: 1px solid #ccc;
+            border-radius: 5px;
+            box-sizing: border-box;
+            margin-bottom: 10px;
+        }
+
+        button {
+            display: block;
+            padding: 10px;
+            background-color: #4CAF50;
+            color: #fff;
+            border: none;
+            border-radius: 5px;
+            cursor: pointer;
+            margin-bottom: 10px;
+        }
+
+        button:hover {
+            background-color: #3e8e41;
+        }
+
+        /* Style the table */
+        table {
+            width: 100%;
+            border-collapse: collapse;
+            margin-bottom: 20px;
+        }
+
+        th,
+        td {
+            padding: 10px;
+            border: 1px solid #ddd;
+            text-align: center;
+        }
+
+        th {
+            background-color: #4CAF50;
+            color: white;
+        }
+
+        tr:nth-child(even) {
+            background-color: #f2f2f2;
+        }
+
+        /* Style the attainment grade */
+        .attainment-grade {
+            font-weight: bold;
+            font-size: 16px;
+            text-align: center;
+            margin-top: 20px;
+        }
+    </style>
+</head>
+
+<body>
+    <h1>Course Attainment System</h1>
+
+    <label for="course-name">Course Name:</label>
+    <input type="text" id="course-name"><br>
+
+    <label for="course-outcome">Course Outcome:</label>
+    <input type="text" id="course-outcome"><br>
+
+    <label for="num-rows">Number of Rows:</label>
+    <input type="number" id="num-rows"><br>
+
+    <label for="target-attainment">Target Attainment:</label>
+    <input type="number" id="target-attainment"><br>
+
+    <button onclick="generateTable()">Generate Table</button>
+    <button onclick="calculateAttainment()">Calculate Attainment</button>
+    <button onclick="downloadCSV()">Download</button>
+
+    <div id="table-container"></div>
+
+    <script>
+        function generateTable() {
+            // Get the user inputs
+            var courseName = document.getElementById("course-name").value;
+            var courseOutcome = document.getElementById("course-outcome").value;
+            var numRows = document.getElementById("num-rows").value;
+            var targetAttainment = document.getElementById("target-attainment").value;
+
+            // Create the table element
+            var table = document.createElement("table");
+
+            // Create the header row
+            var headerRow = document.createElement("tr");
+
+            var th1 = document.createElement("th");
+            th1.textContent = "Name of Student";
+            headerRow.appendChild(th1);
+
+            var th2 = document.createElement("th");
+            th2.textContent = "Test";
+            headerRow.appendChild(th2);
+
+            var th3 = document.createElement("th");
+            th3.textContent = "Assignment";
+            headerRow.appendChild(th3);
+
+            var th4 = document.createElement("th");
+            th4.textContent = "Objective Test";
+            headerRow.appendChild(th4);
+
+            var th5 = document.createElement("th");
+            th5.textContent = "Presentation";
+            headerRow.appendChild(th5);
+
+            var th6 = document.createElement("th");
+            th6.textContent = "Lab Experiment";
+            headerRow.appendChild(th6);
+
+            var th7 = document.createElement("th");
+            th7.textContent = "Marks Scored";
+            headerRow.appendChild(th7);
+
+            var th8 = document.createElement("th");
+            th8.textContent = "Total Marks";
+            headerRow.appendChild(th8);
+
+            var th9 = document.createElement("th");
+            th9.textContent = "Percentage";
+            headerRow.appendChild(th9);
+
+            var th10 = document.createElement("th");
+            th10.textContent = "Attainment Grade";
+            headerRow.appendChild(th10);
+
+            var th11 = document.createElement("th");
+            th11.textContent = "Attainment";
+            headerRow.appendChild(th11);
+
+            table.appendChild(headerRow);
+
+            // Create the rows
+            for (var i = 0; i < numRows; i++) {
+                var row = document.createElement("tr");
+
+                var nameCell = document.createElement("td");
+                var nameInput = document.createElement("input");
+                nameInput.type = "text";
+                nameInput.name = "name" + i;
+                nameCell.appendChild(nameInput);
+                row.appendChild(nameCell);
+                var testCell = document.createElement("td");
+                var testInput = document.createElement("input");
+                testInput.type = "number";
+                testInput.name = "test" + i;
+                testCell.appendChild(testInput);
+                row.appendChild(testCell);
+
+                var assignmentCell = document.createElement("td");
+                var assignmentInput = document.createElement("input");
+                assignmentInput.type = "number";
+                assignmentInput.name = "assignment" + i;
+                assignmentCell.appendChild(assignmentInput);
+                row.appendChild(assignmentCell);
+
+                var objectiveTestCell = document.createElement("td");
+                var objectiveTestInput = document.createElement("input");
+                objectiveTestInput.type = "number";
+                objectiveTestInput.name = "objective-test" + i;
+                objectiveTestCell.appendChild(objectiveTestInput);
+                row.appendChild(objectiveTestCell);
+
+                var presentationCell = document.createElement("td");
+                var presentationInput = document.createElement("input");
+                presentationInput.type = "number";
+                presentationInput.name = "presentation" + i;
+                presentationCell.appendChild(presentationInput);
+                row.appendChild(presentationCell);
+
+                var labExperimentCell = document.createElement("td");
+                var labExperimentInput = document.createElement("input");
+                labExperimentInput.type = "number";
+                labExperimentInput.name = "lab-experiment" + i;
+                labExperimentCell.appendChild(labExperimentInput);
+                row.appendChild(labExperimentCell);
+
+                var marksScoredCell = document.createElement("td");
+                var marksScoredInput = document.createElement("input");
+                marksScoredInput.type = "number";
+                marksScoredInput.name = "marks-scored" + i;
+                marksScoredInput.readOnly = true;
+                marksScoredCell.appendChild(marksScoredInput);
+                row.appendChild(marksScoredCell);
+
+                var totalMarksCell = document.createElement("td");
+                var totalMarksInput = document.createElement("input");
+                totalMarksInput.type = "number";
+                totalMarksInput.name = "total-marks" + i;
+                totalMarksInput.readOnly = true;
+                totalMarksCell.appendChild(totalMarksInput);
+                row.appendChild(totalMarksCell);
+
+                var attainmentPercentageCell = document.createElement("td");
+                var attainmentPercentageInput = document.createElement("input");
+                attainmentPercentageInput.type = "number";
+                attainmentPercentageInput.name = "attainment-percentage" + i;
+                attainmentPercentageInput.readOnly = true;
+                attainmentPercentageCell.appendChild(attainmentPercentageInput);
+                row.appendChild(attainmentPercentageCell);
+
+                var attainmentGradeCell = document.createElement("td");
+                var attainmentGradeInput = document.createElement("input");
+                attainmentGradeInput.type = "text";
+                attainmentGradeInput.name = "attainment-grade" + i;
+                attainmentGradeInput.readOnly = true;
+                attainmentGradeCell.appendChild(attainmentGradeInput);
+                row.appendChild(attainmentGradeCell);
+
+                var attainmentCell = document.createElement("td");
+                var attainmentInput = document.createElement("input");
+                attainmentInput.type = "text";
+                attainmentInput.name = "attainment" + i;
+                attainmentInput.readOnly = true;
+                attainmentCell.appendChild(attainmentInput);
+                row.appendChild(attainmentCell);
+
+                table.appendChild(row);
+            }
+
+            // Add the table to the page
+            var tableContainer = document.getElementById("table-container");
+            tableContainer.innerHTML = "";
+            tableContainer.appendChild(table);
+        }
+
+        function calculateAttainment() {
+            var table = document.querySelector("table");
+            var rows = table.querySelectorAll("tr");
+            var numRows = rows.length - 1; // Exclude header row
+
+            var totalMarks = 0;
+            var totalAttainment = 0;
+
+            for (var i = 1; i < rows.length; i++) { // Skip header row
+                var cells = rows[i].querySelectorAll("td");
+
+                // Calculate marks scored
+                var testMarks = Number(cells[1].querySelector("input").value);
+                var assignmentMarks = Number(cells[2].querySelector("input").value);
+                var objTestMarks = Number(cells[3].querySelector("input").value);
+                var presentationMarks = Number(cells[4].querySelector("input").value);
+                var labExperimentMarks = Number(cells[5].querySelector("input").value);
+
+                var marksScored = testMarks + assignmentMarks + objTestMarks + presentationMarks + labExperimentMarks;
+                cells[6].textContent = marksScored;
+
+                // Calculate total marks
+                var totalTestMarks = Number(cells[1].querySelector("input").getAttribute("max"));
+                var totalAssignmentMarks = Number(cells[2].querySelector("input").getAttribute("max"));
+                var totalObjTestMarks = Number(cells[3].querySelector("input").getAttribute("max"));
+                var totalPresentationMarks = Number(cells[4].querySelector("input").getAttribute("max"));
+                var totalLabExperimentMarks = Number(cells[5].querySelector("input").getAttribute("max"));
+
+                var totalMarksForStudent = 30;
+                cells[7].textContent = totalMarksForStudent;
+
+                totalMarks += totalMarksForStudent;
+
+                // Calculate attainment percentage
+                var targetAttainment = document.getElementById("target-attainment").value;
+                var attainmentPercentage = (marksScored / totalMarksForStudent) * 100;
+                cells[8].textContent = attainmentPercentage.toFixed(2) + "%";
+
+                // Calculate attainment grade
+                var attainmentGrade;
+
+                if (attainmentPercentage >= targetAttainment) {
+                    attainmentGrade = "Grade 3";
+                } else if (attainmentPercentage > 49 && attainmentPercentage < targetAttainment) {
+                    attainmentGrade = "Grade 2";
+                } else if (attainmentPercentage > 39 && attainmentPercentage < 50) {
+                    attainmentGrade = "Grade 1";
+                } else {
+                    attainmentGrade = "NA";
+                }
+
+                cells[9].textContent = attainmentGrade;
+
+                var attainment_yes_no;
+                if (attainmentGrade == "Grade 3" || attainmentGrade == "Grade 2") {
+                    attainment_yes_no = "Yes";
+                }
+                else {
+                    attainment_yes_no = "No";
+                }
+                cells[10].textContent = attainment_yes_no;
+            }
+
+
+            totalAttainment += attainmentPercentage;
+            function downloadCSV() {
+                // Get the table
+                var table = document.getElementById("myTable");
+
+                // Create an empty string to store the CSV data
+                var csvData = "";
+
+                // Loop through the rows of the table
+                for (var i = 0; i < table.rows.length; i++) {
+                    // Loop through the cells of each row
+                    for (var j = 0; j < table.rows[i].cells.length; j++) {
+                        // Get the cell value and add it to the CSV data
+                        csvData += table.rows[i].cells[j].innerHTML + ",";
+                    }
+                    // Add a newline character after each row
+                    csvData += "\n";
+                }
+
+                // Create a download link for the CSV file
+                var downloadLink = document.createElement("a");
+                downloadLink.href = "data:text/csv;charset=utf-8," + encodeURIComponent(csvData);
+                downloadLink.download = "table.csv";
+
+                // Click the download link to start the download
+                downloadLink.click();
+            }
+
+
+
+            // Calculate average attainment percentage
+            var averageAttainment = totalAttainment / numRows;
+
+            // Display the result
+            alert("Average attainment percentage: " + averageAttainment.toFixed(2) + "%\nTarget attainment percentage: " + targetAttainment + "%");
+        }
+    </script>
+</body>
+
+</html>

@@ -1,0 +1,117 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="stylesheet" href="css\final-project-style.css">
+    <link rel="stylesheet" href="css\utils.css">
+    <link rel="stylesheet" href="css\responsive.css">
+</head>
+
+<body>
+    <div class="form-container">
+        <h3 class="heading"><b>SUBJECTS</b></h3>
+        <div class="container" id="subject-container">
+            <form action="form_action.php">
+                <div class="subject">
+                    <label for="Subject"><b>Subject</b></label>
+                    <input type="text" placeholder="Enter Subject name" name="Subject" required>
+                </div>
+                <br>
+                <br>
+                <div class="Course Attainment 1">
+                    <label for="Subject"><b>CO.1</b></label>
+                    <button><a href="first_page.html">CO.1</a></button>
+                </div>
+                <br>
+                <br>
+                <div class="Course Attainment 2">
+                    <label for="Subject"><b>CO.2</b></label>
+                    <button><a href="first_page.html">C0.2</a></button>
+                </div>
+                <br>
+                <br>
+                <div class="Course Attainment 3">
+                    <label for="Subject"><b>CO.3</b></label>
+                    <button><a href="first_page.html">C0.3</a></button>
+                </div>
+                <br>
+                <br>
+                <div class="Course Attainment 3">
+                    <label for="Subject"><b>CO.4</b></label>
+                    <button><a href="first_page.html">C0.4</a></button>
+                </div>
+                <br>
+                <br>
+                <div class="Course Attainment 3">
+                    <label for="Subject"><b>CO.5</b></label>
+                    <button><a href="first_page.html">C0.5</a></button>
+                </div>
+                <br>
+                <br>
+                <div class="Course Attainment 3">
+                    <label for="Subject"><b>CO.6</b></label>
+                    <button><a href="first_page.html">C0.6</a></button>
+                </div>
+            </form>
+
+            <button id="add-subject-button" onclick="addSubjectForm()">Add Subject</button>
+        </div>
+
+        <script>
+            function addSubjectForm() {
+                // create a new form element
+                var form = document.createElement("form");
+                form.setAttribute("action", "form_action.php");
+
+                // create the form elements for the new subject
+                var subjectDiv = document.createElement("div");
+                subjectDiv.classList.add("subject");
+
+                var subjectLabel = document.createElement("label");
+                subjectLabel.setAttribute("for", "subject");
+                subjectLabel.innerHTML = "<b>Subject</b>";
+
+                var subjectInput = document.createElement("input");
+                subjectInput.setAttribute("type", "text");
+                subjectInput.setAttribute("placeholder", "Enter Subject name");
+                subjectInput.setAttribute("name", "subject");
+                subjectInput.setAttribute("required", "");
+
+                subjectDiv.appendChild(subjectLabel);
+                subjectDiv.appendChild(subjectInput);
+                form.appendChild(subjectDiv);
+
+                // create the form elements for the course attainments
+                for (var i = 1; i <= 6; i++) {
+                    var attainmentDiv = document.createElement("div");
+                    attainmentDiv.classList.add("course-attainment");
+
+                    var attainmentLabel = document.createElement("label");
+                    attainmentLabel.setAttribute("for", "co-" + i);
+                    attainmentLabel.innerHTML = "<b>CO." + i + "</b>";
+
+                    var attainmentButton = document.createElement("button");
+                    attainmentButton.innerHTML = "CO." + i;
+
+                    var attainmentLink = document.createElement("a");
+                    attainmentLink.setAttribute("href", "first_page.html");
+                    attainmentLink.appendChild(attainmentButton);
+
+                    attainmentDiv.appendChild(attainmentLabel);
+                    attainmentDiv.appendChild(attainmentLink);
+                    form.appendChild(attainmentDiv);
+                }
+
+                // insert the new form before the "Add Subject" button
+                var addButton = document.getElementById("add-subject-button");
+                addButton.parentNode.insertBefore(form, addButton);
+
+                // move the "Add Subject" button to the end of the container
+                var subjectContainer = document.getElementById("subject-container");
+                subjectContainer.appendChild(addButton);
+            }
+        </script>
+    </div>
+</body>
+
+</html>

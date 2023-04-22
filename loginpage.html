@@ -1,0 +1,112 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <meta name='viewport' content='width=device-width, initial-scale=1'>
+    <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin='anonymous'></script>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+    <link rel="stylesheet" href="css\login-page.css">
+    <style>
+        @media screen and (max-width: 500px) {
+            .logo {
+                width: 20vw;
+                height: auto;
+            }
+
+            .login {
+                width: 100%;
+                height: auto;
+            }
+
+            /* .email {
+                display: flex;
+                align-items: center;
+                justify-content: center;
+                align-content: center;
+                width: 100px;
+            } */
+
+            .email input {
+                width: 86vw;
+                margin-left: 10px;
+            }
+
+            .password input {
+                width: 86vw;
+                margin-left: 10px;
+            }
+
+            button {
+                display: flex;
+                flex-direction: column;
+                width: 200px;
+                margin: 58px 121px 15px 87px;
+                justify-content: center;
+                /* margin-left: 10px; */
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <div class="login">
+        <script src="https://kit.fontawesome.com/a076d05399.js" crossorigin="anonymous"></script>
+
+        <img class="logo" src="img\index-removebg-preview.png" alt="logo">
+        <form class="form">
+            <!-- Email input -->
+            <div class="email">
+                <label class="form-label" for="form2Example1">Email address</label><br>
+                <input type="email" id="form2Example1" class="form-control" placeholder="Email" />
+
+            </div>
+
+            <!-- Password input -->
+            <div class="password">
+                <label class="form-label" for="form2Example2">Password</label> <br>
+                <input type="password" id="form2Example2" class="form-control" placeholder="Password" />
+
+            </div>
+
+            <!-- 2 column grid layout for inline styling -->
+            <div class="row mb-4">
+                <div class="col d-flex justify-content-center">
+                    <!-- Checkbox -->
+                    <div class="form-check">
+                        <input class="form-check-input" type="checkbox" value="" id="form2Example31" checked />
+                        <label class="form-check-label" for="form2Example31"> Remember me </label>
+                    </div>
+                </div>
+
+                <div class="col">
+                    <!-- Simple link -->
+                    <a href="#!">Forgot password?</a>
+                </div>
+            </div>
+
+            <!-- Submit button -->
+            <button type="button" class="btn btn-primary btn-block mb-4">Sign in</button>
+
+            <!-- Register buttons -->
+            <div class="text-center">
+                <p>Not a member? <a href="#!">Register</a></p>
+                <p>or sign up with:</p>
+
+                <button type="button" value="Google" class="btn btn-link btn-floating mx-1">
+                    <i class="fa fa-google"></i> Google
+                </button>
+
+                <button type="button" value="Linkedin" class="btn btn-link btn-floating mx-1">
+                    <i class="fa fa-linkedin-square"></i> Linkedin
+                </button>
+
+                <button type="button" value="Github" class="btn btn-link btn-floating mx-1">
+                    <i class="fa fa-github"></i> Github
+                </button>
+            </div>
+        </form>
+    </div>
+</body>
+
+</html>
